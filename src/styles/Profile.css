@@ -1,0 +1,34 @@
+/* Common styles for all screen sizes */
+.profile-container {
+    max-width: 300px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .profile-container h2 {
+    text-align: center;
+    color: #333;
+  }
+  
+  .profile-container div {
+    margin-top: 15px;
+  }
+  
+  .profile-container p {
+    margin-bottom: 10px;
+    color: #555;
+  }
+  
+  .profile-container p:first-child {
+    font-weight: bold;
+  }
+  
+  /* Media query for screens smaller than 300px */
+  @media (max-width: 300px) {
+    .profile-container {
+      max-width: 100%;
+    }
+  }
+  

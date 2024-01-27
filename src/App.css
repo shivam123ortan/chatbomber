@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap');
+
+* {
+    font-family: 'Open Sans', sans-serif;
+}
+
+
+.app-container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+  }
+  
+  .app-title {
+    text-align: center;
+    color: #333;
+  }
+  
+  .chat-app-container {
+    margin-top: 20px;
+  }
+  
+  .auth-forms-container {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+  }
+  

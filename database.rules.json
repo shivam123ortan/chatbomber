@@ -1,0 +1,11 @@
+{
+  "rules": {
+    ".read": "auth != null",
+    ".write": "auth != null",
+    "users": {
+      ".read": "auth != null",
+      ".write": "auth != null",
+      ".indexOn": "username" // Add this line to define an index on the 'username' field
+    }
+  }
+}

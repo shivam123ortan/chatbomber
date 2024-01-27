@@ -25,17 +25,31 @@ function App() {
 
   return (
     <Router>
-      <div className="App">
-        <h1>My Chat Application</h1>
-
+      <div className="app-container">
+        <h1 className="app-title">ChatBomber</h1>
         <Routes>
+          <Route
+            path="/"
+            element={
+              user ? (
+                <div className="chat-app-container">
+                  <ChatApp />
+                </div>
+              ) : (
+                <div className="auth-forms-container">
+                  <SignIn />
+                  <SignUp />
+                </div>
+              )
+            }
+          />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
-          <Route path="/" element={user ? <ChatApp /> : <div><SignIn /><SignUp /></div>} />
         </Routes>
       </div>
     </Router>
   );
+  
 }
 
 export default App;

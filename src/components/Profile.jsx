@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { auth } from '../firebase'; // Import the auth object
+import '../styles/Profile.css'
 
 function Profile() {
   const [user, setUser] = useState(null);
@@ -22,7 +23,7 @@ function Profile() {
   }, []);
 
   return (
-    <div>
+    <div className="profile-container">
       <h2>Profile</h2>
       {user ? (
         <div>
@@ -34,6 +35,7 @@ function Profile() {
       )}
     </div>
   );
+  
 }
 
 export default Profile;

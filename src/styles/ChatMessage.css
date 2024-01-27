@@ -1,0 +1,41 @@
+/* Common styles for all screen sizes */
+.chat-messages-container {
+  margin-top: 20px;
+}
+
+.chat-message {
+  padding: 8px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.sent {
+  background-color: #3498db;
+  color: white;
+}
+
+.received {
+  background-color: #f1f0f0;
+  color: #333;
+}
+
+.message-user {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.message-text {
+  word-break: break-word;
+}
+
+/* Media query for screens smaller than 600px */
+@media (max-width: 600px) {
+  .chat-message {
+    padding: 10px; /* Increase padding on smaller screens */
+  }
+
+  .message-user {
+    display: block; /* Display user name on a new line for better readability */
+    margin-bottom: 5px;
+  }
+}

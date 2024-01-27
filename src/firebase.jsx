@@ -12,6 +12,7 @@ import { getDatabase } from 'firebase/database';
 const firebaseConfig = {
   apiKey: "AIzaSyBppriz7eiH_3edRTg3Riyj6TmmvfFhsKA",
   authDomain: "chatbomber-c172f.firebaseapp.com",
+  databaseURL: "https://chatbomber-c172f-default-rtdb.firebaseio.com",
   projectId: "chatbomber-c172f",
   storageBucket: "chatbomber-c172f.appspot.com",
   messagingSenderId: "401553152175",

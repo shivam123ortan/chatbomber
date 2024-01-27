@@ -6,7 +6,11 @@ import {
   fetchSignInMethodsForEmail,
 } from 'firebase/auth'; // Import the necessary Firebase functions
 import { auth, database } from '../firebase'; // Import the auth and database objects
-import { ref, set, get } from 'firebase/database'; // Import the necessary Firebase Realtime Database functions
+import { ref, set, get, query, orderByChild, equalTo, child } from 'firebase/database'; // Import the necessary Firebase Realtime Database functions
+
+import '../styles/SignUp.css';
+
+ // Import the necessary Firebase Realtime Database functions
 
 function SignUp() {
   const [email, setEmail] = useState('');
@@ -82,51 +86,101 @@ function SignUp() {
   };
 
   // Function to check if the username is already in use
-  const checkUsernameExists = async (desiredUsername) => {
-    const usersRef = ref(database, 'users');
-    const snapshot = await get(usersRef);
+  // Function to check if the username is already in use
+// const checkUsernameExists = async (desiredUsername) => {
+//   try {
+//     // Your existing code...
+//     const userRef = ref(database, 'users');
+//     const recipientQuery = query(
+//       userRef,
+//       orderByChild('username'),
+//       equalTo(desiredUsername)
+//     );
+//     const snapshot = await get(query(recipientQuery));
+//     if (!snapshot.exists()) {
+//       console.error('Recipient username does not exist. Query:', stringify(recipientQuery));
+//       return false;
+//     }
 
-    if (snapshot.exists()) {
-      const usersData = snapshot.val();
-      for (const userId in usersData) {
-        if (usersData[userId].username === desiredUsername) {
-          return true;
-        }
-      }
+//     // Your existing code...
+//   } catch (error) {
+//     console.error('Error in checkUsernameExists:', error.message);
+//     return false;
+//   }
+// };
+
+const checkUsernameExists = async (desiredUsername) => {
+  try {
+    const userRef = ref(database, 'users');
+    const recipientQuery = query(
+      userRef,
+      orderByChild('username'),
+      equalTo(desiredUsername)
+    );
+
+    const snapshot = await get(recipientQuery);
+    if (!snapshot.exists()) {
+      console.error('Recipient username does not exist. Query:', recipientQuery);
+      return false;
     }
 
+    // Your existing code...
+  } catch (error) {
+    console.error('Error in checkUsernameExists:', error.message);
     return false;
-  };
+  }
+};
 
-  return (
-    <div>
-      <h2>Sign Up</h2>
-      {signupError && <p className="error">{signupError}</p>} {/* Display the error message */}
-      <div>
-        <label>Full Name:</label>
-        <input type="text" value={fullName} onChange={(e) => setFullName(e.target.value)} />
-      </div>
-      <div>
-        <label>Username:</label>
-        <input
-          type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        {usernameError && <p className="error">{usernameError}</p>}
-      </div>
-      <div>
-        <label>Email:</label>
-        <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-        {emailError && <p className="error">{emailError}</p>}
-      </div>
-      <div>
-        <label>Password:</label>
-        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-      </div>
-      <button onClick={handleSignUp}>Sign Up</button>
+  
+
+return (
+  <div className="sign-up-container">
+    <h2 className="sign-up-header">Sign Up</h2>
+    {signupError && <p className="error">{signupError}</p>}
+    <div className="form-group">
+      <label className="form-label">Full Name:</label>
+      <input
+        className="form-input"
+        type="text"
+        value={fullName}
+        onChange={(e) => setFullName(e.target.value)}
+      />
     </div>
-  );
+    <div className="form-group">
+      <label className="form-label">Username:</label>
+      <input
+        className="form-input"
+        type="text"
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+      />
+      {usernameError && <p className="error">{usernameError}</p>}
+    </div>
+    <div className="form-group">
+      <label className="form-label">Email:</label>
+      <input
+        className="form-input"
+        type="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+      />
+      {emailError && <p className="error">{emailError}</p>}
+    </div>
+    <div className="form-group">
+      <label className="form-label">Password:</label>
+      <input
+        className="form-input"
+        type="password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+      />
+    </div>
+    <button className="sign-up-button" onClick={handleSignUp}>
+      Sign Up
+    </button>
+  </div>
+);
+
 }
 
 export default SignUp;

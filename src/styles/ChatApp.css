@@ -1,0 +1,60 @@
+/* Common styles for all screen sizes */
+.chat-app {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+  }
+  
+  .chat-header {
+    text-align: center;
+    color: #333;
+  }
+  
+  .chat-input-container {
+    margin-top: 15px;
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap to the next line on smaller screens */
+    gap: 10px;
+  }
+  
+  .recipient-input,
+  .message-input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  .send-button,
+  .guest-signup-button,
+  .logout-button {
+    background-color: #3498db;
+    color: white;
+    padding: 10px;
+    margin-top: 5px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  .send-button:hover,
+  .guest-signup-button:hover {
+    background-color: #2980b9;
+  }
+  
+  .logout-button:hover {
+    background-color: #2980b9;
+    margin-left: 10px; /* Add margin to the left of the logout button */
+  }
+  
+  .chat-messages-container {
+    margin-top: 20px;
+  }
+  
+  /* Media query for screens smaller than 600px */
+  @media (max-width: 600px) {
+    .chat-input-container {
+      flex-direction: column; /* Stack items vertically on smaller screens */
+    }
+  }
+  
